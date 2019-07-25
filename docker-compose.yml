@@ -1,0 +1,37 @@
+version: '2'
+services:
+  wordpress:
+    privileged: true
+    image: visiblevc/wordpress:latest
+    ports:
+      - ${PORT}:80
+      - 443:443
+    volumes:
+      - ./src/wp-core/db:/data
+      - ./src/${THEME_NAME}:/app/wp-content/themes/${THEME_NAME}
+      - ./src/wp-core/wp-content/uploads:/app/wp-content/uploads
+      - ./src/wp-core/plugins:/app/wp-content/plugins
+    environment:
+      DB_NAME: ${DATABASE_NAME}
+      DB_PASS: ${DATABASE_PASSWORD}
+      DB_PREFIX: ${TABLE_PREFIX}
+      ADMIN_EMAIL: ${ADMIN_EMAIL}
+      THEMES: >-
+        [local]${THEME_NAME}
+      PLUGINS: >-
+        [local]advanced-custom-fields-pro
+      PERMALINKS: /%category%/%postname%/
+  db:
+    image: mariadb:10 # or mysql:5.7
+    volumes:
+      - data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DATABASE_PASSWORD}
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DATABASE_PASSWORD}
+    ports:
+      - 3030:80
+volumes:
+  data:
