@@ -1,0 +1,13 @@
+{
+    "name": "reativ/reativ-wp-starter-kit",
+    "authors": [{
+        "name": "Francisco Costa",
+        "email": "f.costa@reativ.com"
+    }],
+    "config": {
+        "vendor-dir": "src/reativ-wp-starter-kit/vendor"
+    },
+    "require": {
+        "wp-bootstrap/wp-bootstrap-navwalker": "^4.2"
+    }
+}

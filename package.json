@@ -9,11 +9,11 @@
   "author": "Francisco Costa <f.costa@reativ.com>",
   "license": "ISC",
   "scripts": {
-    "build:style": "node-sass src/scss/style.scss src/reativ/style.css --output-style expanded && postcss -r src/reativ/style.css",
-    "build:style-editor": "node-sass src/scss/style-editor.scss src/reativ/style-editor.css --output-style expanded && postcss -r src/reativ/style-editor.css",
-    "build:style-editor-customizer": "node-sass src/scss/style-editor-customizer.scss src/reativ/style-editor-customizer.css --output-style expanded && postcss -r src/reativ/style-editor-customizer.css",
-    "build:rtl": "rtlcss src/reativ/style.css src/reativ/style-rtl.css",
-    "build:print": "node-sass src/scss/print.scss src/reativ/print.css --output-style expanded && postcss -r src/reativ/print.css",
+    "build:style": "node-sass src/scss/style.scss src/reativ-wp-starter-kit/style.css --output-style expanded && postcss -r src/reativ-wp-starter-kit/style.css",
+    "build:style-editor": "node-sass src/scss/style-editor.scss src/reativ-wp-starter-kit/style-editor.css --output-style expanded && postcss -r src/reativ-wp-starter-kit/style-editor.css",
+    "build:style-editor-customizer": "node-sass src/scss/style-editor-customizer.scss src/reativ-wp-starter-kit/style-editor-customizer.css --output-style expanded && postcss -r src/reativ-wp-starter-kit/style-editor-customizer.css",
+    "build:rtl": "rtlcss src/reativ-wp-starter-kit/style.css src/reativ-wp-starter-kit/style-rtl.css",
+    "build:print": "node-sass src/scss/print.scss src/reativ-wp-starter-kit/print.css --output-style expanded && postcss -r src/reativ-wp-starter-kit/print.css",
     "build": "run-p \"build:*\"",
     "watch": "chokidar \"**/*.scss\" -c \"npm run build\" --initial"
   },

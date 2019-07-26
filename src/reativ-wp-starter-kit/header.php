@@ -15,27 +15,37 @@
 </head>
 
 <body <?php body_class(); ?>>
+  <header>
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+      <a class="navbar-brand" href="<?= get_home_url() ?>">
+        <?php if (has_custom_logo()) : ?>
+          <?php
+            $custom_logo_id = get_theme_mod('custom_logo');
+            $custom_logo_url = wp_get_attachment_image_url( $custom_logo_id , 'full' );
+          ?>
+          <img src="<?= esc_url($custom_logo_url) ?>" alt="<?php bloginfo('name'); ?>" width="200">
+        <?php else: ?>
+          <?php bloginfo('name'); ?>
+        <?php endif; ?>
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-<header>
-  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-    <a class="navbar-brand" href="#"><?php bloginfo('name'); ?></a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarCollapse">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" href="#">Disabled</a>
-        </li>
-      </ul>
+      <?php
+		    wp_nav_menu([
+          'theme_location'    => 'primary',
+          'depth'             => 2,
+          'container'         => 'div',
+          'container_class'   => 'collapse navbar-collapse',
+          'container_id'      => 'navbarCollapse',
+          'menu_class'        => 'navbar-nav mr-auto',
+          'fallback_cb'       => 'WP_Bootstrap_Navwalker::fallback',
+          'walker'            => new WP_Bootstrap_Navwalker(),
+        ]);
+		  ?>
+
       <?php get_search_form(); ?>
-    </div>
-  </nav>
-</header>
-    
+    </nav>
+  </header>
+      

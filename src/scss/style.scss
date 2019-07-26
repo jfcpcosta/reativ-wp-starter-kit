@@ -6,3 +6,14 @@ Description: Reativ wordpress starter kit
 Version: 1.0.0
 Tags: bootstrap
 */
+
+@import './styles/fonts';
+@import './styles/general';
+@import './styles/header';
+@import './styles/footer';
+@import './styles/home';
+@import './styles/single';
+@import './styles/search';
+@import './styles/categories';
+@import './styles/404';
+@import './styles/responsive';

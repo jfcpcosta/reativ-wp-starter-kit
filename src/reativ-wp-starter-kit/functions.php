@@ -1,12 +1,9 @@
 <?php
-/**
- * Custom Menus
- */
-function custom_theme_menus_init() {
-    register_nav_menus([
-        'primary' => __('Primary Menu'),
-        'footer'  => __('Footer Menu'),
-        'social'  => __('Social Links Menu'),
-    ]);
-}
-add_action('init', 'custom_theme_menus_init');
+
+require_once get_template_directory() . '/vendor/autoload.php';
+
+require_once get_template_directory() . '/inc/template-functions.php';
+require_once get_template_directory() . '/inc/template-support.php';
+require_once get_template_directory() . '/inc/template-widget-areas.php';
+require_once get_template_directory() . '/inc/template-menus.php';
+require_once get_template_directory() . '/inc/template-custom-posts.php';
